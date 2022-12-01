@@ -1,5 +1,6 @@
 import { Contador } from "./components/Contador"
 import { ContadorConHook } from "./components/ContadorConHook"
+import { Login } from "./components/Login"
 import { Funciones } from "./typescript/Funciones"
 import { ObjetosLiterales } from "./typescript/ObjetosLiterales"
 import { TiposBasicos } from "./typescript/TiposBasicos"
@@ -9,11 +10,12 @@ const App = () => {
   <div className="mt-2">
     <h1>Introducción a React con TS</h1>
     <hr />
-    <TiposBasicos/>
+    {/* <TiposBasicos/>
     <ObjetosLiterales/>
     <Funciones/>
     <Contador/>
-    <ContadorConHook/>
+    <ContadorConHook/> */}
+    <Login/>
   </div>
   )
 }
