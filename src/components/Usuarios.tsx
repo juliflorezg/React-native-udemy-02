@@ -1,17 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
-import { reqResApi } from '../api/reqRes'
-import { ReqResListado, Usuario } from '../interfaces/reqRes'
+// import { useEffect, useRef, useState } from 'react'
+// import { reqResApi } from '../api/reqRes'
+import { Usuario } from '../interfaces/reqRes'
+
+import { useUsuarios } from "../hooks/useUsuarios"
 
 export const Usuarios = () => {
-  const [usuarios, setUsuarios] = useState<Usuario[]>([])
-  // const [currentPage, setCurrentPage] = useState(0)
-  const pageRef = useRef(1)
-
-  useEffect(() => {
-    //llamado a la API
-    getUsers()
-  }, [])
-
+  const [usuarios, getUsers] = useUsuarios()
   const renderUser = ({
     id,
     first_name,
@@ -34,24 +28,6 @@ export const Usuarios = () => {
         <td>{email}</td>
       </tr>
     )
-  }
-
-  const getUsers = async () => {
-    console.log(pageRef.current)
-    // setCurrentPage(currentValue => ++currentValue)
-
-    const response = await reqResApi.get<ReqResListado>('/users', {
-      params: {
-        page: pageRef.current,
-      },
-    })
-
-    if (response.data.data.length > 0) {
-      setUsuarios(response.data.data)
-      pageRef.current++
-    } else {
-      alert('No hay más usuarios')
-    }
   }
 
   return (
