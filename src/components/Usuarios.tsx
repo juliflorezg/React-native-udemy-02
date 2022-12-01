@@ -2,10 +2,11 @@
 // import { reqResApi } from '../api/reqRes'
 import { Usuario } from '../interfaces/reqRes'
 
-import { useUsuarios } from "../hooks/useUsuarios"
+import { useUsuarios } from '../hooks/useUsuarios'
 
 export const Usuarios = () => {
-  const [usuarios, getUsers] = useUsuarios()
+  const [usuarios, getPreviousPage, getNextPage] = useUsuarios()
+
   const renderUser = ({
     id,
     first_name,
@@ -43,8 +44,11 @@ export const Usuarios = () => {
         </thead>
         <tbody>{usuarios.map(renderUser)}</tbody>
       </table>
-
-      <button className="btn btn-primary" onClick={getUsers}>
+      <button className="btn btn-primary" onClick={getPreviousPage}>
+        Anteriores
+      </button>
+      &nbsp;
+      <button className="btn btn-primary" onClick={getNextPage}>
         Siguientes
       </button>
     </>
